@@ -1,21 +1,16 @@
 local PARTE = workspace.PARTE
+local acabou = false
 
 PARTE.Touched:Connect(function()
-	
-	
-	
-	while PARTE.BrickColor ~= BrickColor.new("Brigth green")do
-		
-		wait(0.1)
-		
-		PARTE.BrickColor = BrickColor.Random()
-		
-		if PARTE.BrickColor == BrickColor.new("Bright green") then
-			
-			print("Acabou")
+	if acabou then return end
+	acabou = true
+	PARTE.CanTouch = false
 
-			break
+	while PARTE.BrickColor ~= BrickColor.new("Bright green") do
+		wait(0.1)
+		PARTE.BrickColor = BrickColor.Random()
 	end
-	
-	end
+
+	PARTE.CanTouch = true
+	print("Acabou")
 end)
